@@ -2,15 +2,15 @@ app:
   name: my-backend-api
 
 dependencies:
-  - mongodb:
+  - type: mongodb
     name: ids
     version: 3.4
     size: 500MB
-  - mongodb:
+  - type: mongodb
     name: catalog
     version: 3.4
     size: 3GB
-  - elasticsearch:
+  - type: elasticsearch
     name: websearch
     version: 7.1
     size: 5GB
