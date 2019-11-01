@@ -1,5 +1,7 @@
 app:
   name: my-backend-api
+  type: java
+  version: 8
 
 dependencies:
   - type: mongodb
