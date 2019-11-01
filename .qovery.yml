@@ -3,14 +3,18 @@ app:
 
 dependencies:
   - type: mongodb
-    name: ids
+    name: my-ids
     version: 3.4
     size: 500MB
   - type: mongodb
-    name: catalog
+    name: my-catalog
     version: 3.4
     size: 3GB
   - type: elasticsearch
-    name: websearch
+    name: my-websearch
     version: 7.1
     size: 5GB
+  - type: redis
+    name: my-super-redis
+    version: 5
+    size: 100MB
