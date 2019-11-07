@@ -1,24 +1,10 @@
-FROM adoptopenjdk/openjdk11:alpine AS build
-MAINTAINER Romaric Philogène <romaric@qovery.com>
+FROM openjdk:8-jdk-alpine
 
-RUN apk update && apk upgrade && apk add bash
+RUN mkdir /app
 
-RUN cd /usr/local/bin && wget https://services.gradle.org/distributions/gradle-5.6-all.zip && \
-/usr/bin/unzip gradle-5.6-all.zip && ln -s /usr/local/bin/gradle-5.6/bin/gradle /usr/bin/gradle
-
-RUN mkdir -p /app
-COPY . /app
+COPY ./ /app/
 WORKDIR /app
-RUN gradle build -x test
 
-FROM adoptopenjdk/openjdk11:alpine-slim
-MAINTAINER Romaric Philogène <rphilogene@qovery.com>
+RUN ./gradlew build -x test
 
-RUN apk update && apk upgrade && apk add bash
-
-EXPOSE 8080
-
-COPY --from=build /app/build/libs/app.jar /app.jar
-
-ENV JAVA_OPTS=""
-CMD exec java $JAVA_OPTS -jar /app.jar
+CMD ["java", "-server", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:InitialRAMFraction=2", "-XX:MinRAMFraction=2", "-XX:MaxRAMFraction=2", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=100", "-XX:+UseStringDeduplication", "-jar", "build/libs/my-application.jar"]
