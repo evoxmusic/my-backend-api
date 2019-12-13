@@ -1,20 +1,4 @@
-app:
+application:
   name: my-backend-api
-
-dependencies:
-  - type: mongodb
-    name: my-ids
-    version: 3.4
-    size: 500MB
-  - type: mongodb
-    name: my-catalog
-    version: 3.4
-    size: 3GB
-  - type: elasticsearch
-    name: my-websearch
-    version: 7.1
-    size: 5GB
-  - type: redis
-    name: my-super-redis
-    version: 5
-    size: 100MB
+  project: test-back-java
+  publicly_accessible: true
