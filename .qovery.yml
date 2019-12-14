@@ -2,3 +2,7 @@ application:
   name: my-backend-api
   project: test-back-java
   publicly_accessible: true
+databases:
+- name: my-pql
+  type: postgresql
+  version: 11.5
