@@ -6,3 +6,10 @@ databases:
 - name: my-pql
   type: postgresql
   version: 11.5
+- name: my-cache
+  type: redis
+  version: 5.0
+brokers:
+- name: my-rabbit
+  type: rabbitmq
+  version: 3.8
